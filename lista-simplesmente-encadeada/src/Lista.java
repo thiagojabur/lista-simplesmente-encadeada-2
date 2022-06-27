@@ -35,6 +35,28 @@ public class Lista {
 		return tail;
 	}
 	
+	boolean temRepetidos() {
+		//fazer um laço que vai do primeiro elemento até tail
+		No cursor, cursor2; 
+		cursor = head;
+		cursor2 = head.getProximo();
+		if (quantidadeElementos == 0) return false;
+		
+		while (cursor != tail) {			
+			while (cursor2 != null) {
+			  //System.out.println("comparou " + cursor.getValor() + " com " + cursor2.getValor());  
+			  if (cursor.getValor() == cursor2.getValor())
+				return true;
+				cursor2 = cursor2.getProximo();
+			} 	
+			cursor = cursor.getProximo();
+			//resetando cursor2
+			cursor2 = cursor.getProximo();
+		} 
+		
+		return false;
+	}
+	
 	boolean buscar(int numeroBuscado) {
 		if (quantidadeElementos == 0) return false;
 		No cursor = head;
