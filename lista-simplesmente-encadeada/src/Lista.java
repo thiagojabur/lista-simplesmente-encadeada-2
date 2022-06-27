@@ -57,6 +57,40 @@ public class Lista {
 		return false;
 	}
 	
+	boolean remover(No noRemover) {
+		if (quantidadeElementos == 0) return false;
+		
+		if (buscar(noRemover.getValor())) {
+			//refazer as ligacoes
+			//achar o anterior do noRemover
+			No cursor = head;
+			No anterior = head;
+			
+			//se for remover o head tem que atualizar ele
+			if (noRemover.equals(head)) {
+				head = head.getProximo();
+				quantidadeElementos--;
+				return true;
+			}	
+			
+			
+			while (!cursor.equals(noRemover)) {
+				anterior = cursor;
+				cursor = cursor.getProximo();
+			}	
+			
+			
+			
+			System.out.println("anterior " + anterior.getValor());
+			anterior.setProximo(noRemover.getProximo());
+			
+			quantidadeElementos--;
+			return true;
+		}
+		
+		return false;
+	}
+	
 	boolean buscar(int numeroBuscado) {
 		if (quantidadeElementos == 0) return false;
 		No cursor = head;
